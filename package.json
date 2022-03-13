@@ -2,8 +2,13 @@
   "name": "javascript-starter-config",
   "version": "1.0.0",
   "description": "Quick JS project starter",
-  "scripts": {},
-  "author": "Cory House",
+  "scripts": {
+    "prestart": "node build-scripts/startMessage.js",
+    "start": "node build-scripts/srcServer.js",
+    "localtunnel": "lt --port 3000 --subdomain mamba",
+    "share": "npm-run-all --parallel start localtunnel"
+  },
+  "author": "Joseph Maramba",
   "license": "MIT",
   "dependencies": {
     "whatwg-fetch": "3.6.2"
