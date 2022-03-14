@@ -1,6 +1,8 @@
 import numeral from "numeral";
 import "./index.css";
 
+/* eslint-disable no-console */
+
 const courseValue = numeral(100).format("$0,0.00");
-debugger;
+
 console.log(`I would pay ${courseValue} for this awesome course!`);
