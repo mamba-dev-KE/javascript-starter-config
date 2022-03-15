@@ -4,12 +4,17 @@
   "description": "Quick JS project starter",
   "scripts": {
     "prestart": "babel-node build-scripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
     "open:src": "babel-node build-scripts/srcServer.js",
+    "lint": "esw webpack.config.* src build-scripts --color",
+    "lint:watch": "npm run lint -- --watch",
     "localtunnel": "lt --port 3000 --subdomain mamba",
     "share": "npm-run-all --parallel start localtunnel",
-    "lint": "esw webpack.config.* src build-scripts --color",
-    "lint:watch": "npm run lint -- --watch"
+    "test": "mocha --reporter progress build-scripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node build-scripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "Joseph Maramba",
   "license": "MIT",
