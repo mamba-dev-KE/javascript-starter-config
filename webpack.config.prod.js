@@ -7,13 +7,16 @@ import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  mode: "development",
-  devtool: "eval-source-map",
-  entry: "./src/index.js",
+  mode: "production",
+  devtool: "source-map",
+  entry: {
+    main: path.resolve(__dirname, "src/index"),
+    vendor: path.resolve(__dirname, "src/vendor"),
+  },
   output: {
-    path: path.resolve(__dirname, "src"),
+    path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    filename: "bundle.js",
+    filename: "[name].[chunkhash].js",
   },
   plugins: [
     // create HTML file that includes references to bundled JS
